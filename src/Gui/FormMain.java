@@ -4,19 +4,38 @@
  */
 package Gui;
 
+import Business.Parroquia;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Camilo
  */
 public class FormMain extends javax.swing.JFrame {
-
+    
+Parroquia myParroquia;
     /**
      * Creates new form FormMain
      */
     public FormMain() {
+        this.myParroquia=new Parroquia();
         initComponents();
+        this.txtValorDiezmo.setEditable(false);
+        this.txtInfo.setEditable(false);
     }
 
+    
+    private void limpiar(){
+        
+        this.txtNombre.setText("");
+        this.txtCedula.setText("");
+        this.txtDireccion.setText("");
+        this.txtTelefono.setText("");
+        this.cmbEstrato.setSelectedIndex(0);
+        this.txtInfo.setText("");
+     this.txtCedulaFiel.setText("");
+     this.txtValorDiezmo.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,49 +46,75 @@ public class FormMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        txtCedula = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        cmbGuardarFiel = new javax.swing.JButton();
+        cmbModificarFiel = new javax.swing.JButton();
+        cmbEliminarFiel = new javax.swing.JButton();
+        cmbBuscarFiel = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cmbEstrato = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txtCedulaFiel = new javax.swing.JTextField();
+        txtValorDiezmo = new javax.swing.JTextField();
+        cmbConsultarDiezmo = new javax.swing.JButton();
+        cmbPagarDiezmo = new javax.swing.JButton();
+        cmbTotalDiezmo = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtInfo = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 153));
 
-        jTextField1.setText("Cedula");
+        cmbGuardarFiel.setText("Guardar");
+        cmbGuardarFiel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGuardarFielActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setText("Nombre");
+        cmbModificarFiel.setText("Modificar");
+        cmbModificarFiel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbModificarFielActionPerformed(evt);
+            }
+        });
 
-        jTextField3.setText("Direccion");
+        cmbEliminarFiel.setText("Eliminar");
+        cmbEliminarFiel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEliminarFielActionPerformed(evt);
+            }
+        });
 
-        jTextField4.setText("Telefono");
+        cmbBuscarFiel.setText("Buscar");
+        cmbBuscarFiel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBuscarFielActionPerformed(evt);
+            }
+        });
 
-        jTextField5.setText("Estado");
+        jLabel2.setText("Cedula:");
 
-        jTextField6.setText("Estrato");
+        jLabel3.setText("Nombre:");
 
-        jButton4.setText("Guardar");
+        jLabel4.setText("Direccion:");
 
-        jButton5.setText("Modificar");
+        jLabel5.setText("Telefono:");
 
-        jButton6.setText("Eliminar");
+        jLabel6.setText("Estrato:");
 
-        jButton7.setText("Buscar");
+        cmbEstrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,55 +123,82 @@ public class FormMain extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                    .addComponent(txtCedula)
+                    .addComponent(cmbGuardarFiel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbModificarFiel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbEliminarFiel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbBuscarFiel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbEstrato, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6)
-                .addGap(18, 18, 18)
-                .addComponent(jButton7)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(11, 11, 11)
+                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmbEstrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(cmbGuardarFiel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbModificarFiel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbEliminarFiel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbBuscarFiel)
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
 
-        jTextField7.setText("Cedula");
+        cmbConsultarDiezmo.setText("Consultar");
+        cmbConsultarDiezmo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbConsultarDiezmoActionPerformed(evt);
+            }
+        });
 
-        jTextField8.setText("Valor Diezmo");
+        cmbPagarDiezmo.setText("Pagar");
+        cmbPagarDiezmo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPagarDiezmoActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Consultar");
+        cmbTotalDiezmo.setText("Totalizar");
+        cmbTotalDiezmo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTotalDiezmoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Pagar");
+        jLabel7.setText("Cedula:");
 
-        jButton3.setText("Totalizar");
+        jLabel8.setText("Valor Diezmo:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,33 +206,40 @@ public class FormMain extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtValorDiezmo, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                        .addComponent(txtCedulaFiel, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                        .addComponent(cmbConsultarDiezmo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmbPagarDiezmo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmbTotalDiezmo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(42, 42, 42))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCedulaFiel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtValorDiezmo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(cmbConsultarDiezmo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbPagarDiezmo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbTotalDiezmo)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtInfo.setColumns(20);
+        txtInfo.setRows(5);
+        jScrollPane1.setViewportView(txtInfo);
 
         jLabel1.setText("Parroquia");
 
@@ -200,6 +279,128 @@ public class FormMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cmbGuardarFielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGuardarFielActionPerformed
+        // TODO add your handling code here:
+        String nombre=this.txtNombre.getText();
+        String cedula=this.txtCedula.getText();
+        String direccion=this.txtDireccion.getText();
+        String telefono=this.txtTelefono.getText();
+        String estrato=String.valueOf(this.cmbEstrato.getSelectedItem());
+        
+        if("".equals(cedula)||"".equals(nombre)||"".equals(direccion)||
+           "".equals(telefono)||"Seleccione".equals(estrato)){
+            JOptionPane.showMessageDialog(null, "Rellene los campos");
+        }else{
+            String c=this.myParroquia.registrarFiel(cedula, nombre, telefono, direccion, estrato);
+            JOptionPane.showMessageDialog(null,c);
+            this.limpiar();
+        }
+        
+    }//GEN-LAST:event_cmbGuardarFielActionPerformed
+
+    private void cmbModificarFielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbModificarFielActionPerformed
+        // TODO add your handling code here:
+        
+        String nombre=this.txtNombre.getText();
+        String cedula=this.txtCedula.getText();
+        String direccion=this.txtDireccion.getText();
+        String telefono=this.txtTelefono.getText();
+        String estrato=String.valueOf(this.cmbEstrato.getSelectedItem());
+        
+        if("".equals(cedula)||"".equals(nombre)||"".equals(direccion)||
+           "".equals(telefono)||"Seleccione".equals(estrato)){
+            JOptionPane.showMessageDialog(null, "Rellene los campos");
+        }else{
+            String c=this.myParroquia.modificarFiel(cedula, nombre, telefono, direccion, estrato);
+            JOptionPane.showMessageDialog(null,c);
+            this.limpiar();
+        }
+        
+        
+    }//GEN-LAST:event_cmbModificarFielActionPerformed
+
+    private void cmbBuscarFielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBuscarFielActionPerformed
+        // TODO add your handling code here:
+        
+        String cedula=this.txtCedula.getText();
+        
+        if("".equals(cedula)){
+            JOptionPane.showMessageDialog(null, "Digita la cedula del fiel");
+        }else{
+            String [] c=this.myParroquia.consultarFiel(cedula).split("-");
+            if(c[0].equals("Fiel no existe")){
+                JOptionPane.showMessageDialog(null, c[0]);
+            }else{
+            this.txtNombre.setText(c[1]);
+            this.txtDireccion.setText(c[2]);
+            this.txtTelefono.setText(c[3]);
+            this.cmbEstrato.setSelectedIndex(Integer.parseInt(c[4]));
+            this.txtInfo.setText(c[1]+" se encuentra como: "+c[5]);
+            } 
+        }
+        
+    }//GEN-LAST:event_cmbBuscarFielActionPerformed
+
+    private void cmbEliminarFielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEliminarFielActionPerformed
+        // TODO add your handling code here:
+        
+        String cedula=this.txtCedula.getText();
+        
+        if("".equals(cedula)){
+            JOptionPane.showMessageDialog(null, "Digita la cedula del fiel que desea eliminar");
+        }else{
+            String  c=this.myParroquia.eliminarFiel(cedula);
+            JOptionPane.showMessageDialog(null, c);
+            this.limpiar();
+        }
+        
+        
+    }//GEN-LAST:event_cmbEliminarFielActionPerformed
+
+    private void cmbConsultarDiezmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbConsultarDiezmoActionPerformed
+        // TODO add your handling code here:
+        
+        String cedula=this.txtCedulaFiel.getText();
+        
+        if("".equals(cedula)){
+            JOptionPane.showMessageDialog(null, "Digita la cedula del fiel que desea consultar");
+        }else{
+            String  c=this.myParroquia.consultarDiezmo(cedula);
+            if("Fiel no existe".equals(c)){
+                JOptionPane.showMessageDialog(null, c);
+            }else{
+                this.txtValorDiezmo.setText(c); 
+            }
+           
+        }
+        
+        
+    }//GEN-LAST:event_cmbConsultarDiezmoActionPerformed
+
+    private void cmbPagarDiezmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPagarDiezmoActionPerformed
+        // TODO add your handling code here:
+        
+        String cedula=this.txtCedulaFiel.getText();
+        String valorDiezmo=this.txtValorDiezmo.getText();
+        
+        if("".equals(cedula)||"".equals(valorDiezmo)){
+            JOptionPane.showMessageDialog(null, "Digita la cedula y el valor a pagar");
+        }else{
+            String  c=this.myParroquia.pagarDiezmo(cedula ,valorDiezmo);
+             JOptionPane.showMessageDialog(null, c);
+             this.limpiar();
+        }
+         
+
+    }//GEN-LAST:event_cmbPagarDiezmoActionPerformed
+
+    private void cmbTotalDiezmoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTotalDiezmoActionPerformed
+        // TODO add your handling code here:
+        
+        this.txtInfo.setText(this.myParroquia.totalizarDiezmos());
+        
+    }//GEN-LAST:event_cmbTotalDiezmoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,25 +437,31 @@ public class FormMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton cmbBuscarFiel;
+    private javax.swing.JButton cmbConsultarDiezmo;
+    private javax.swing.JButton cmbEliminarFiel;
+    private javax.swing.JComboBox<String> cmbEstrato;
+    private javax.swing.JButton cmbGuardarFiel;
+    private javax.swing.JButton cmbModificarFiel;
+    private javax.swing.JButton cmbPagarDiezmo;
+    private javax.swing.JButton cmbTotalDiezmo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCedulaFiel;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextArea txtInfo;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtValorDiezmo;
     // End of variables declaration//GEN-END:variables
 }

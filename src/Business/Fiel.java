@@ -13,16 +13,16 @@ public class Fiel {
     private String nombre;
     private String direccion;
     private String telefono;
-    private String estrato;
+    private int estrato;
     private String estado;
 
-    public Fiel(String cedula, String nombre, String direccion, String telefono, String estrato, String estado) {
+    public Fiel(String cedula, String nombre, String direccion, String telefono, int estrato) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.estrato = estrato;
-        this.estado = estado;
+        this.estado = "Deudor";
     }
 
     public String getCedula() {
@@ -57,11 +57,11 @@ public class Fiel {
         this.telefono = telefono;
     }
 
-    public String getEstrato() {
+    public int getEstrato() {
         return estrato;
     }
 
-    public void setEstrato(String estrato) {
+    public void setEstrato(int estrato) {
         this.estrato = estrato;
     }
 
